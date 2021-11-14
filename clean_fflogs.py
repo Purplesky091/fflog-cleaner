@@ -3,7 +3,7 @@ from datetime import datetime
 import glob
 
 # how many days old a file should be before it's deleted.
-DELETION_AGE = 2 
+DELETION_AGE = 3 
 
 def getFileDate(fileName):
     fileName = fileName.split(".")[0]
@@ -23,7 +23,7 @@ for file_name in file_list:
     # how many days old the file is
     file_age = (todays_date - file_date).days 
 
-    if file_age > DELETION_AGE:
+    if file_age >= DELETION_AGE:
         print(f'deleting file: {file_name}')
         os.remove(file_name)
     else:
